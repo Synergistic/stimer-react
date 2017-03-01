@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: #95a5a6
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.container {
+  background-color: #bdc3c7;
+  width: 256px;
+  margin: 10px auto;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+}
+
+
+.timerHeader { 
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.timerText {
+  color: #2c3e50;
+  font-size: 60px;
+}
+
+hr {
+  margin: 0;
+   border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))
+}
+
+.timerTitle{
+  color: #2c3e50;
+    margin: 0;
+}
+
+
+.controls > i {
+  margin: 4px 10px;
+}
+
+.infoIcon {
+  text-align: right;
+  margin-right: 4px;
+  margin-top: -16px;
+}
+
+i {
+  color: #2c3e50;
+}
+
+i:hover {
+  color:white;
+  cursor: pointer;
+}
+
+i:active {
+  color: black;
+}
+
