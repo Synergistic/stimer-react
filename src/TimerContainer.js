@@ -7,10 +7,6 @@ import Info from './Info'
 
 
 class TimerContainer extends React.Component {
-
-    times = [2700000, 900000];
-    titles = ["Work", "Break"];
-
     componentWillUnmount() {
         clearInterval(this.timer);
     };
@@ -19,10 +15,8 @@ class TimerContainer extends React.Component {
         super(props);
         this.state = {
             timer: {
-                type: 0,
-                remainingTime: this.times[0],
-                startTime: null,
-                title: this.titles[0]
+                elapsedSeconds: 0,
+                startTime: Date.now(),
             }
         };
         this.timer = setInterval(() => this.tick(), 50);
@@ -34,17 +28,6 @@ class TimerContainer extends React.Component {
 
     handlePauseClick = () => {
         this.stopTimer();
-    }
-
-    handleSkipClick = () => {
-        const targetType = this.state.timer.type === 0 ? 1 : 0;
-        const newTimer = {
-            type: targetType,
-            remainingTime: this.times[targetType],
-            startTime: null,
-            title: this.titles[targetType]
-        }
-        this.setState({ timer: newTimer })
     }
 
     startTimer = () => {
@@ -65,26 +48,17 @@ class TimerContainer extends React.Component {
     }
 
     tick = () => {
-        if (!this.state.timer.startTime || this.state.timer.remainingTime <= 999) {
+        if (!this.state.timer.startTime) {
             return;
         }
-        const newStartTime = Date.now();
-        const elapsed = newStartTime - this.state.timer.startTime;
-        const newRemaining = this.state.timer.remainingTime - elapsed;
-
-        let newTitle = this.state.timer.title;
-        if(newRemaining < 999){
-            newTitle += " over!";
-        };
-
+        let elapsedMilliseconds = Date.now() - this.state.timer.startTime;
+        let elapsedSeconds = elapsedMilliseconds / 1000;
         let newTimer = {
-            remainingTime: newRemaining,
-            startTime: newStartTime,
-            title: newTitle
+            elapsedSeconds: elapsedSeconds,
         };
         this.setState({
-            timer: Object.assign({}, this.state.timer, newTimer)
-        });
+            ...this.state, elapsedSeconds: elapsedSeconds
+        })
         return;
     }
 
@@ -96,17 +70,13 @@ class TimerContainer extends React.Component {
                 />
                 <hr />
                 <Timer
-                    remainingTime={this.state.timer.remainingTime}
-                    startTime={this.state.timer.startTime}
+                    remainingTime={this.state.elapsedSeconds}
                 />
                 <TimerControls
                     onPauseClick={this.handlePauseClick}
                     onPlayClick={this.handlePlayClick}
-                    onSkipClick={this.handleSkipClick}
                     timer={this.state.timer}
-
                 />
-                <Info />
             </div>);
     }
 }

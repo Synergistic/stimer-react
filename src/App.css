@@ -30,11 +30,12 @@ body {
 
 .container {
   background-color: #bdc3c7;
-  width: 256px;
+  width: 50%;
   margin: 10px auto;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding-bottom: 24px
 }
 
 
@@ -45,7 +46,7 @@ body {
 
 .timerText {
   color: #2c3e50;
-  font-size: 60px;
+  font-size: 128px;
 }
 
 hr {
@@ -63,6 +64,8 @@ hr {
 
 .controls > i {
   margin: 4px 10px;
+  padding: 0 24px 0 24px;
+  font-size: 100px;
 }
 
 .infoIcon {
